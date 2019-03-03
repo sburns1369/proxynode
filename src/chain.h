@@ -75,11 +75,11 @@ enum BlockStatus {
      * sigops, size, merkle root. Implies all parents are at least TREE but not necessarily TRANSACTIONS. When all
      * parent blocks also have TRANSACTIONS, CBlockIndex::nChainTx will be set.
      */
-    BLOCK_VALID_TRANSACTIONS = 3,
+    BLOCK_VALID_TRANSACTIONS = 15,
 
     //! Outputs do not overspend inputs, no double spends, coinbase output ok, immature coinbase spends, BIP30.
     //! Implies all parents are also at least CHAIN.
-    BLOCK_VALID_CHAIN = 4,
+    BLOCK_VALID_CHAIN = 10,
 
     //! Scripts & signatures ok. Implies all parents are also at least SCRIPTS.
     BLOCK_VALID_SCRIPTS = 5,
@@ -344,7 +344,7 @@ public:
 
     /**
      * Returns true if there are nRequired or more blocks of minVersion or above
-     * in the last Params().ToCheckBlockUpgradeMajority() blocks, starting at pstart 
+     * in the last Params().ToCheckBlockUpgradeMajority() blocks, starting at pstart
      * and going backwards.
      */
     static bool IsSuperMajority(int minVersion, const CBlockIndex* pstart, unsigned int nRequired);
